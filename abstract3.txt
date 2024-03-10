@@ -1,0 +1,71 @@
+// Superclass
+class Animal {
+    String species;
+
+    Animal(String species) {
+        this.species = species;
+    }
+
+    void makeSound() {
+        System.out.println("Animal sound");
+    }
+
+    void display() {
+        System.out.println("Species: " + species);
+    }
+}
+
+// Subclass Mammal
+class Mammal extends Animal {
+    Mammal(String species) {
+        super(species);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Mammal sound");
+    }
+}
+
+// Subclass Bird
+class Bird extends Animal {
+    Bird(String species) {
+        super(species);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Bird sound");
+    }
+}
+
+// Subclass Fish
+class Fish extends Animal {
+    Fish(String species) {
+        super(species);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Fish sound");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Animal mammal = new Mammal("Lion");
+        Animal bird = new Bird("Eagle");
+        Animal fish = new Fish("Salmon");
+
+        // Demonstrate polymorphism
+        mammal.display();
+        mammal.makeSound();
+
+        bird.display();
+        bird.makeSound();
+
+        fish.display();
+        fish.makeSound();
+    }
+}

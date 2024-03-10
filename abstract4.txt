@@ -1,0 +1,128 @@
+import java.util.ArrayList;
+
+// Superclass
+class Animal {
+    private String species;
+    private int age;
+
+    Animal(String species, int age) {
+        this.species = species;
+        this.age = age;
+    }
+
+    void displayDetails() {
+        System.out.println("Species: " + species);
+        System.out.println("Age: " + age);
+    }
+
+    String getSpecies() {
+        return species;
+    }
+}
+
+// Subclass Mammal
+class Mammal extends Animal {
+    private String habitat;
+
+    Mammal(String species, int age, String habitat) {
+        super(species, age);
+        this.habitat = habitat;
+    }
+
+    @Override
+    void displayDetails() {
+        super.displayDetails();
+        System.out.println("Habitat: " + habitat);
+    }
+}
+
+// Subclass Bird
+class Bird extends Animal {
+    private String featherColor;
+
+    Bird(String species, int age, String featherColor) {
+        super(species, age);
+        this.featherColor = featherColor;
+    }
+
+    @Override
+    void displayDetails() {
+        super.displayDetails();
+        System.out.println("Feather Color: " + featherColor);
+    }
+}
+
+// Subclass Fish
+class Fish extends Animal {
+    private String waterType;
+
+    Fish(String species, int age, String waterType) {
+        super(species, age);
+        this.waterType = waterType;
+    }
+
+    @Override
+    void displayDetails() {
+        super.displayDetails();
+        System.out.println("Water Type: " + waterType);
+    }
+}
+
+// Zoo class
+class Zoo {
+    private ArrayList<Animal> animals;
+
+    Zoo() {
+        animals = new ArrayList<>();
+    }
+
+    void addAnimal(Animal animal) {
+        animals.add(animal);
+    }
+
+    void listAllAnimals() {
+        System.out.println("List of Animals in the Zoo:");
+        for (Animal animal : animals) {
+            animal.displayDetails();
+            System.out.println();
+        }
+    }
+
+    void identifyAnimalsOfType(String type) {
+        System.out.println("Animals of type " + type + " in the Zoo:");
+        for (Animal animal : animals) {
+            if (type.equalsIgnoreCase("Mammal") && animal instanceof Mammal) {
+                animal.displayDetails();
+                System.out.println();
+            } else if (type.equalsIgnoreCase("Bird") && animal instanceof Bird) {
+                animal.displayDetails();
+                System.out.println();
+            } else if (type.equalsIgnoreCase("Fish") && animal instanceof Fish) {
+                animal.displayDetails();
+                System.out.println();
+            }
+        }
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Zoo zoo = new Zoo();
+
+        // Adding some animals to the zoo
+        zoo.addAnimal(new Mammal("Lion", 5, "Savanna"));
+        zoo.addAnimal(new Bird("Eagle", 3, "Brown"));
+        zoo.addAnimal(new Fish("Salmon", 2, "Freshwater"));
+
+        // Listing all animals in the zoo
+        zoo.listAllAnimals();
+
+        System.out.println();
+
+        // Identifying animals of specific types
+        zoo.identifyAnimalsOfType("Mammal");
+        zoo.identifyAnimalsOfType("Bird");
+        zoo.identifyAnimalsOfType("Fish");
+    }
+}
